@@ -120,7 +120,8 @@ _TODO_
 
 Voici les ajouts que j'aimerais apporter prochainement à RN-Infinity:
 
--   ajout de tests
+-   ⚠️ajout de tests
+-   ⚠️documentation du code
 -   améliorer la gestion des erreurs serveur side
 -   code splitting
 -   d'autres générateurs (authentification, générateur de crud pour toutes les tables de la base de données)

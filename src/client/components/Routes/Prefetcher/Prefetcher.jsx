@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Loader from './../../Loader/PageLoader.jsx';
 import { subscribe } from 'react-contextual';
 import { withRouter } from 'react-router-dom';
 
@@ -37,7 +38,7 @@ class Prefetcher extends Component {
     render() {
         const { component: Component } = this.props;
         const { fetching } = this.state;
-        return fetching ? null : <Component />;
+        return fetching ? <Loader /> : <Component />;
     }
 }
 
