@@ -1,0 +1,77 @@
+.infinity
+    --w : 452px
+    --h: 160px
+    --r: 130px
+    --b: 40px
+    width: var(--w)
+    height: var(--h)
+    position: relative
+    border: none
+    color: $color-black
+    margin: $spacing-lg auto 0
+    +mobile
+        --w: 212px
+        --r: 60px
+        --b: 20px
+        --h: 100px
+    &:hover::after, &:hover::before
+        background: $color-primary
+        border-radius: 50%
+        @supports (mix-blend-mode: screen)
+            background: black
+    &:hover::after
+        transform: scale(0.5) translateX(-105%)
+    &:hover::before
+        transform: scale(0.5) translateX(105%)
+    &::before, &::after
+        width: var(--r)
+        height: var(--r)
+        position: absolute
+        content: ""
+        top: -25%
+        transition: all 0.5s
+        border: var(--b) solid $color-primary
+        @supports (mix-blend-mode: screen)
+            filter: drop-shadow(0 0 4px black)
+            border: var(--b) solid black
+    &::before
+        left: 0
+        border-radius: 50% 50% 0
+        transform: rotateZ(-45deg)
+    &::after
+        right: 0
+        border-radius: 50% 50% 50% 0
+        transform: rotateZ(45deg)
+
+.infinity-wrapper
+    position: relative
+    overflow: hidden
+    padding: $spacing-xs
+
+.infinity-overlay
+    pointer-events: none
+    position: absolute
+    background: linear-gradient($color-primary 25%, $color-secondary)
+    z-index: 1
+    top: calc(0 + #{$spacing-lg})
+    left: 50%
+    transform: translate(-50%, -50%)
+    width: 999px
+    height: 999px
+    mix-blend-mode: screen
+    animation: overlay-rotate 3s linear infinite
+    display: none
+    @supports (mix-blend-mode: screen)
+        display: block
+
+@keyframes overlay-rotate
+    from
+        transform: translate(-50%, -50%)
+    25%
+        transform: translate(-50%, -50%) rotateZ(90DEG)
+    50%
+        transform: translate(-50%, -50%) rotateZ(180DEG)
+    75%
+        transform: translate(-50%, -50%) rotateZ(270DEG)
+    to
+        transform: translate(-50%, -50%) rotateZ(360DEG)
